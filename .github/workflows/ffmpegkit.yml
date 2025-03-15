@@ -8,8 +8,8 @@ on:
 jobs:
   build:
     name: macos main on sonoma
-    #runs-on: macos-14
-    runs-on: macos-latest
+    runs-on: macos-14
+    # runs-on: macos-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -31,9 +31,21 @@ jobs:
       - name: run the build script
         working-directory: ./ffmpeg-kit
         run: ./macos.sh --xcframework --enable-macos-audiotoolbox --enable-macos-avfoundation --enable-macos-bzip2 --enable-macos-coreimage --enable-macos-libiconv --enable-macos-opencl --enable-macos-opengl --enable-macos-videotoolbox --enable-macos-zlib
-        # run: ./macos.sh --enable-freetype --enable-macos-avfoundation 
 
-      - name: print build logs
-        if: ${{ always() }}
+      # - name: print build logs
+      #   if: ${{ always() }}
+      #   working-directory: ./ffmpeg-kit
+      #   run: cat build.log
+
+      - name: print ffbuild logs
         working-directory: ./ffmpeg-kit
-        run: cat build.log
+        if: ${{ failure() }}
+        run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+        
+      # - name: Verify XCFramework
+      #   working-directory: ./ffmpeg-kit
+      #   run: lipo -info ios/ffmpeg-kit.xcframework/macos-x86_64_arm64/libffmpeg.dylib
+
+      - name: print ffbuild logs
+        working-directory: ./ffmpeg-kit/prebuilt/bundle-apple-xcframework-macos/
+        run: ls -al
