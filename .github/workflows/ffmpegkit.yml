@@ -29,6 +29,8 @@ jobs:
       # - name: set up xcode
       #   run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
 
+
+      # macOS
       - name: run the build script (macOS)
         working-directory: ./ffmpeg
         run: ./macos.sh --xcframework --enable-macos-audiotoolbox --enable-macos-avfoundation --enable-macos-bzip2 --enable-macos-coreimage --enable-macos-libiconv --enable-macos-opencl --enable-macos-opengl --enable-macos-videotoolbox --enable-macos-zlib
@@ -42,7 +44,27 @@ jobs:
         working-directory: ./ffmpeg
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+
         
+      # iOS
+      - name: run the build script (iOS)
+        working-directory: ./ffmpeg
+        run: ./ios.sh --xcframework --enable-ios-audiotoolbox --enable-ios-avfoundation --enable-ios-bzip2 --enable-ios-libiconv --enable-ios-videotoolbox --enable-ios-zlib
+
+      - name: print build logs
+        if: ${{ always() }}
+        working-directory: ./ffmpeg
+        run: cat build.log
+
+      - name: print ffbuild logs
+        working-directory: ./ffmpeg
+        if: ${{ failure() }}
+        run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+
+      - name: print ./ffmpeg/prebuilt/
+        working-directory: ./ffmpeg/prebuilt/
+        run: ls -al
+
       # - name: Verify XCFramework
       #   working-directory: ./ffmpeg
       #   run: lipo -info ios/ffmpeg-kit.xcframework/macos-x86_64_arm64/libffmpeg.dylib
