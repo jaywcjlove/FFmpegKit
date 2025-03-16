@@ -59,10 +59,9 @@ jobs:
           mkdir -p ./ffmpeg-kit/macos
           find ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/macos/ \;
 
-      - name: print ./ffmpeg/macos
-        working-directory: ./ffmpeg/macos
+      - name: print ./ffmpeg-kit/macos
+        working-directory: ./ffmpeg-kit/macos
         run: ls -al
-
 
       - name: Commit and Push
         run: |
