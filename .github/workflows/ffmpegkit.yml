@@ -47,21 +47,22 @@ jobs:
       #   working-directory: ./ffmpeg
       #   run: lipo -info ios/ffmpeg-kit.xcframework/macos-x86_64_arm64/libffmpeg.dylib
 
-      - name: print ffbuild logs
+      - name: print ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/
         working-directory: ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/
-        run: ls -al
-
-      - name: Copy all .xcframework directories
-        run: |
-          mkdir -p ./ffmpeg/macos
-          find ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/macos/ \;
-
-      - name: print ffbuild logs
-        working-directory: ./ffmpeg/macos
         run: ls -al
 
       - name: remove ./ffmpeg/.git
         run: rm -rf ./ffmpeg/.git
+
+      - name: Copy all .xcframework directories
+        run: |
+          mkdir -p ./ffmpeg-kit/macos
+          find ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/macos/ \;
+
+      - name: print ./ffmpeg/macos
+        working-directory: ./ffmpeg/macos
+        run: ls -al
+
 
       - name: Commit and Push
         run: |
