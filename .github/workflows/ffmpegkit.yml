@@ -56,12 +56,15 @@ jobs:
           mkdir -p ./ffmpeg/macos
           find ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/macos/ \;
 
+      - name: remove ./ffmpeg/.git
+        run: rm -rf ./ffmpeg/.git
+
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add ./ffmpeg/macos
+          git add -f ./ffmpeg/macos
           git commit -m "Update xcframeworks" || exit 0
           git push
         env:
