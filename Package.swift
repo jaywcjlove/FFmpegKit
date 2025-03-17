@@ -10,20 +10,20 @@ let package = Package(
         .iOS("12.1")
     ],
     products: [
-        // .library(
-        //     name: "FFmpegKitiOS",
-        //     targets: [
-        //         "ffmpegkit-ios",
-        //         "libavcodec-ios",
-        //         "libavdevice-ios",
-        //         "libavfilter-ios",
-        //         "libavformat-ios",
-        //         "libavutil-ios",
-        //         "libswresample-ios",
-        //         "libswscale-ios",
-        //         "Common",
-        //     ]
-        // ),
+        .library(
+            name: "FFmpegKitiOS",
+            targets: [
+                "ffmpegkit-ios",
+                "libavcodec-ios",
+                "libavdevice-ios",
+                "libavfilter-ios",
+                "libavformat-ios",
+                "libavutil-ios",
+                "libswresample-ios",
+                "libswscale-ios",
+                "Common",
+            ]
+        ),
 
         .library(
             name: "FFmpegKitmacOS",
@@ -45,15 +45,15 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        // // iOS specific frameworks
-        // .binaryTarget(name: "ffmpegkit-ios", path: "ffmpeg-kit/ios/ffmpegkit.xcframework"),
-        // .binaryTarget(name: "libavcodec-ios", path: "ffmpeg-kit/ios/libavcodec.xcframework"),
-        // .binaryTarget(name: "libavdevice-ios", path: "ffmpeg-kit/ios/libavdevice.xcframework"),
-        // .binaryTarget(name: "libavfilter-ios", path: "ffmpeg-kit/ios/libavfilter.xcframework"),
-        // .binaryTarget(name: "libavformat-ios", path: "ffmpeg-kit/ios/libavformat.xcframework"),
-        // .binaryTarget(name: "libavutil-ios", path: "ffmpeg-kit/ios/libavutil.xcframework"),
-        // .binaryTarget(name: "libswresample-ios", path: "ffmpeg-kit/ios/libswresample.xcframework"),
-        // .binaryTarget(name: "libswscale-ios", path: "ffmpeg-kit/ios/libswscale.xcframework"),
+        // iOS specific frameworks
+        .binaryTarget(name: "ffmpegkit-ios", path: "ffmpeg-kit/ios/ffmpegkit.xcframework"),
+        .binaryTarget(name: "libavcodec-ios", path: "ffmpeg-kit/ios/libavcodec.xcframework"),
+        .binaryTarget(name: "libavdevice-ios", path: "ffmpeg-kit/ios/libavdevice.xcframework"),
+        .binaryTarget(name: "libavfilter-ios", path: "ffmpeg-kit/ios/libavfilter.xcframework"),
+        .binaryTarget(name: "libavformat-ios", path: "ffmpeg-kit/ios/libavformat.xcframework"),
+        .binaryTarget(name: "libavutil-ios", path: "ffmpeg-kit/ios/libavutil.xcframework"),
+        .binaryTarget(name: "libswresample-ios", path: "ffmpeg-kit/ios/libswresample.xcframework"),
+        .binaryTarget(name: "libswscale-ios", path: "ffmpeg-kit/ios/libswscale.xcframework"),
 
         // macOS specific frameworks
         .binaryTarget(name: "ffmpegkit-macos", path: "ffmpeg-kit/macos/ffmpegkit.xcframework"),
