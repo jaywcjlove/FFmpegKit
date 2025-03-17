@@ -79,6 +79,10 @@ jobs:
         working-directory: ./ffmpeg/prebuilt/apple-ios-arm64/
         run: ls -al
 
+      - name: print ./ffmpeg/prebuilt/apple-ios-arm64/ffmpeg-kit
+        working-directory: ./ffmpeg/prebuilt/apple-ios-arm64/ffmpeg-kit
+        run: ls -al
+
       - name: remove ./ffmpeg/.git
         run: rm -rf ./ffmpeg/.git
 
