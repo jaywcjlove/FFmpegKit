@@ -63,7 +63,9 @@ jobs:
 
       - name: print ./ffmpeg/prebuilt/
         working-directory: ./ffmpeg/prebuilt/
-        run: ls -al
+        run: |
+          ls -al
+          tree
 
       # - name: Verify XCFramework
       #   working-directory: ./ffmpeg
