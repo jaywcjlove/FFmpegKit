@@ -73,6 +73,10 @@ jobs:
         working-directory: ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/
         run: ls -al
 
+      - name: print ./ffmpeg/prebuilt/apple-ios-arm64/
+        working-directory: ./ffmpeg/prebuilt/apple-ios-arm64/
+        run: ls -al
+
       - name: remove ./ffmpeg/.git
         run: rm -rf ./ffmpeg/.git
 
@@ -80,9 +84,15 @@ jobs:
         run: |
           mkdir -p ./ffmpeg-kit/macos
           find ./ffmpeg/prebuilt/bundle-apple-xcframework-macos/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/macos/ \;
+          mkdir -p ./ffmpeg-kit/ios
+          find ./ffmpeg/prebuilt/apple-ios-arm64/ -type d -name "*.xcframework" -exec cp -R {} ./ffmpeg-kit/ios/ \;
 
       - name: print ./ffmpeg-kit/macos
         working-directory: ./ffmpeg-kit/macos
+        run: ls -al
+
+      - name: print ./ffmpeg-kit/ios
+        working-directory: ./ffmpeg-kit/ios
         run: ls -al
 
       - name: Commit and Push
@@ -91,6 +101,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git add -f ./ffmpeg-kit/macos
+          git add -f ./ffmpeg-kit/ios
           git commit -m "Update xcframeworks" || exit 0
           git push
         env:
