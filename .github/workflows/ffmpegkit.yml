@@ -41,6 +41,7 @@ jobs:
             --disable-lib-libvidstab \
             --disable-lib-snappy \
             --disable-lib-soxr \
+            --disable-lib-chromaprint \
             --disable-lib-x265
 
       - name: print build logs
