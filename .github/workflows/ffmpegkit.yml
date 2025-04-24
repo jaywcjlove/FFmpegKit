@@ -1,9 +1,11 @@
 name: Build FFmpegKit
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
 
 jobs:
   build:
@@ -43,6 +45,7 @@ jobs:
             --disable-lib-soxr \
             --disable-lib-chromaprint \
             --disable-lib-x265
+            --disable-lib-srt
 
       - name: print build logs
         if: ${{ always() }}
