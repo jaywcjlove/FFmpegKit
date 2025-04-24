@@ -39,6 +39,7 @@ jobs:
           ./macos.sh --xcframework --full --enable-gpl \
             --disable-lib-dav1d \
             --disable-lib-libvidstab \
+            --disable-lib-snappy \
             --disable-lib-x265
 
       - name: print build logs
