@@ -29,6 +29,9 @@ jobs:
       # - name: set up xcode
       #   run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
 
+      - name: macos.sh --help (macOS)
+        working-directory: ./ffmpeg
+        run: ./macos.sh --help
 
       # macOS
       - name: run the build script (macOS)
@@ -43,7 +46,6 @@ jobs:
             --enable-macos-opengl \
             --enable-macos-videotoolbox \
             --enable-macos-zlib \
-            --enable-libmp3lame \
             --enable-gpl 
 
       - name: print build logs
