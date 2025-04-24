@@ -35,7 +35,7 @@ jobs:
 
       - name: run the build script (macOS)
         working-directory: ./ffmpeg
-        run: ./macos.sh --xcframework --full --enable-gpl 
+        run: ./macos.sh --xcframework --full --enable-gpl --disable-lib-dav1d
 
       - name: print build logs
         if: ${{ always() }}
