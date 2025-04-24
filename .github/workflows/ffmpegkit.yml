@@ -38,14 +38,17 @@ jobs:
       - name: run the build script (macOS)
         working-directory: ./ffmpeg
         run: |
-          ./macos.sh --xcframework --full --enable-gpl \
-            --disable-lib-dav1d \
-            --disable-lib-libvidstab \
-            --disable-lib-snappy \
-            --disable-lib-soxr \
-            --disable-lib-chromaprint \
-            --disable-lib-x265
-            --disable-lib-srt
+          ./macos.sh --xcframework \
+              --enable-macos-audiotoolbox \
+              --enable-macos-avfoundation \
+              --enable-macos-bzip2 \
+              --enable-macos-coreimage \
+              --enable-macos-libiconv \
+              --enable-macos-opencl \
+              --enable-macos-opengl \
+              --enable-macos-videotoolbox \
+              --enable-macos-zlib \
+              --enable-lame
 
       - name: print build logs
         if: ${{ always() }}
