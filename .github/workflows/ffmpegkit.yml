@@ -29,24 +29,13 @@ jobs:
       # - name: set up xcode
       #   run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
 
-      - name: macos.sh --help (macOS)
-        working-directory: ./ffmpeg
+      # macOS
+      - working-directory: ./ffmpeg
         run: ./macos.sh --help
 
-      # macOS
       - name: run the build script (macOS)
         working-directory: ./ffmpeg
-        run: |
-          ./macos.sh --xcframework --enable-macos-audiotoolbox \
-            --enable-macos-avfoundation \
-            --enable-macos-bzip2 \
-            --enable-macos-coreimage \
-            --enable-macos-libiconv \
-            --enable-macos-opencl \
-            --enable-macos-opengl \
-            --enable-macos-videotoolbox \
-            --enable-macos-zlib \
-            --enable-gpl 
+        run: ./macos.sh --xcframework --full --enable-gpl 
 
       - name: print build logs
         if: ${{ always() }}
@@ -57,9 +46,11 @@ jobs:
         working-directory: ./ffmpeg
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
-
         
       # iOS
+      - working-directory: ./ffmpeg
+        run: ./ios.sh --help
+
       - name: run the build script (iOS)
         working-directory: ./ffmpeg
         run: ./ios.sh --xcframework --enable-ios-audiotoolbox --enable-ios-avfoundation --enable-ios-bzip2 --enable-ios-libiconv --enable-ios-videotoolbox --enable-ios-zlib
