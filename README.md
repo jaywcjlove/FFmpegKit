@@ -16,6 +16,7 @@ FFmpegKit
     --enable-libvorbis \
     --enable-libtheora \
     --enable-opus \
+    --enable-libvpx \
     --enable-lame
 ```
 
