@@ -13,6 +13,8 @@ FFmpegKit
     --enable-macos-opengl \
     --enable-macos-videotoolbox \
     --enable-macos-zlib \
+    --enable-libvorbis \
+    --enable-opus \
     --enable-lame
 ```
 
