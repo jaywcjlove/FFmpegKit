@@ -14,6 +14,7 @@ FFmpegKit
     --enable-macos-videotoolbox \
     --enable-macos-zlib \
     --enable-libvorbis \
+    --enable-libtheora \
     --enable-opus \
     --enable-lame
 ```

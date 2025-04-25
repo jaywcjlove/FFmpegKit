@@ -48,6 +48,9 @@ jobs:
               --enable-macos-opengl \
               --enable-macos-videotoolbox \
               --enable-macos-zlib \
+              --enable-libvorbis \
+              --enable-libtheora \
+              --enable-opus \
               --enable-lame
 
       - name: print build logs
