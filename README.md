@@ -18,6 +18,7 @@ FFmpegKit
     --enable-opus \
     --enable-opencore-amr \
     --enable-libvpx \
+    --enable-speex \
     --enable-lame
 ```
 
