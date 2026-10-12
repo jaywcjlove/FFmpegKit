@@ -69,7 +69,13 @@ jobs:
 
       - name: run the build script (iOS)
         working-directory: ./ffmpeg
-        run: ./ios.sh --xcframework --enable-ios-audiotoolbox --enable-ios-avfoundation --enable-ios-bzip2 --enable-ios-libiconv --enable-ios-videotoolbox --enable-ios-zlib
+        run: ./ios.sh --xcframework \
+          --enable-ios-audiotoolbox \
+          --enable-ios-avfoundation \
+          --enable-ios-bzip2 \
+          --enable-ios-libiconv \
+          --enable-ios-videotoolbox \
+          --enable-ios-zlib
 
       - name: print build logs
         if: ${{ always() }}
